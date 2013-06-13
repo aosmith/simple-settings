@@ -4,7 +4,7 @@ A gem for managing a settings file.
 
 http://fury-badge.herokuapp.com/rb/simple-settings.png
 
-{<img src="https://travis-ci.org/aosmith/simple-settingss.png?branch=master" />}[https://travis-ci.org/aosmith/simple-settings?branch=master]
+{<img src="https://travis-ci.org/aosmith/simple-settings.png?branch=master" />}[https://travis-ci.org/aosmith/simple-settings?branch=master]
 
 == Usage
 
