@@ -1,0 +1,4 @@
+test:
+  key: "value"
+  nested:
+    nested_key: "nested value"

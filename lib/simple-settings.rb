@@ -1,5 +1,20 @@
-require "mantra-settings/version"
+require "simple-settings/version"
+require 'logger'
+require 'yaml'
 
+class Hash
+  def symbolize_keys
+    arr = {}
+    self.each do |k,v|
+      if v.is_a? Hash
+        arr[k.to_sym] = v.symbolize_keys
+      else
+        arr[k.to_sym] = v
+      end
+    end
+    arr
+  end
+end
 module SimpleSettings
   @env = false
   @file_path = false
@@ -23,20 +38,8 @@ module SimpleSettings
 
     def env
       return @env if @env
-      return @env = Rails.env
-    end
-  end
-  class Hash
-    def symbolize_keys
-      arr = {}
-      self.each do |k,v|
-        if v.is_a? Hash
-          arr[k.to_sym] = v.symbolize_keys!
-        else
-          arr[k.to_sym] = v
-        end
-      end
-      arr
+      return @env = Rails.env if defined?(Rails)
+      return @env = false
     end
   end
 end
