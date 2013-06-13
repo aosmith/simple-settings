@@ -1,0 +1,24 @@
+= SimpleSettings
+
+A gem for managing a settings file.
+
+http://fury-badge.herokuapp.com/rb/simple-settings.png
+
+{<img src="https://travis-ci.org/aosmith/simple-settingss.png?branch=master" />}[https://travis-ci.org/aosmith/simple-settings?branch=master]
+
+== Usage
+
+At some point you'll need to load settings.  In a rails project I'd do this in config/initializers/01_settings.rb:
+
+  SimpleSettings.load
+
+If you're not using a rails project you'll need to set the location of the settings.yml and your current environment via:
+  
+  SimpleSettings.file_path = "~/path_to/settings.yml"
+  SimpleSettings.env = "development"
+
+Your yaml file will be available via:
+
+  SimpleSettings[:setting_name]
+  SimpleSettings[:nested_attributes][:work_too]
+
