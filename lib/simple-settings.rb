@@ -33,13 +33,18 @@ module SimpleSettings
 
     def file_path
       return @file_path if @file_path
-      return @file_path = Rails.root.join('config','settings.yml') if Rails.root
+      if defined?(Rails)
+        return @file_path = Rails.root.join('config','settings.yml') if Rails.root
+      else
+        return './config/settings.yml'
+      end
     end
 
     def env
       return @env if @env
       return @env = Rails.env if defined?(Rails)
-      return @env = false
+      return @env = ENV['RAILS_ENV'] unless ENV['RAILS_ENV'].nil?
+      return @env = 'development'
     end
   end
 end
